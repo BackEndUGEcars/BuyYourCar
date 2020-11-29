@@ -50,34 +50,34 @@ public class ServiceProxy implements fr.uge.webservices.Service {
     return service.getBuyableCarsJson(currency);
   }
   
+  public int buyCar(long carId, java.lang.String login, java.lang.String password) throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.buyCar(carId, login, password);
+  }
+  
+  public java.lang.String getActiveCurrencies() throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.getActiveCurrencies();
+  }
+  
   public boolean removeBasket(long carId) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
     return service.removeBasket(carId);
   }
   
-  public java.lang.String basketToJson() throws java.rmi.RemoteException{
-    if (service == null)
-      _initServiceProxy();
-    return service.basketToJson();
-  }
-  
-  public boolean buyCar(long carId, java.lang.String login, java.lang.String password) throws java.rmi.RemoteException{
-    if (service == null)
-      _initServiceProxy();
-    return service.buyCar(carId, login, password);
-  }
-  
-  public java.lang.String getActiveCurencies() throws java.rmi.RemoteException{
-    if (service == null)
-      _initServiceProxy();
-    return service.getActiveCurencies();
-  }
-  
   public boolean addBasket(long carId) throws java.rmi.RemoteException{
     if (service == null)
       _initServiceProxy();
     return service.addBasket(carId);
+  }
+  
+  public java.lang.String basketToJson() throws java.rmi.RemoteException{
+    if (service == null)
+      _initServiceProxy();
+    return service.basketToJson();
   }
   
   public boolean isInBasket(long carId) throws java.rmi.RemoteException{

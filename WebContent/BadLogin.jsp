@@ -41,16 +41,16 @@
 			<div class="container-fluid">
 				<div class="wrapper">
 					<h2>
-						<strong>Error</strong>
+						<strong>Login Error</strong>
 					</h2>
-					<h3 style="text-align: center; color: #ccc;">An error occurred during payment process,<br> please verify if there is a sufficient <br>amount on your bank account</h3>
+					<h3 style="text-align: center; color: #ccc;">Error, invalid login/password, <br>please try again </h3>
 					<div
 						style="margin: auto; text-align: center; height: 30%; width: 50%;"
 						class="wrapper">
-						<form class="form-signin" action="Cart.jsp">
+						<form class="form-signin" action="Connection.jsp">
 							<button
 								style="color: #fff; background-color: #01D758; border-color: #01D758;"
-								class="btn btn-lg btn-primary btn-block" type="submit">Back to cart</button>
+								class="btn btn-lg btn-primary btn-block" type="submit">Try again</button>
 						</form>
 					</div>
 				</div>

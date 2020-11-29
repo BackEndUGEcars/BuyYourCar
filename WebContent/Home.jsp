@@ -69,11 +69,11 @@ if(session.getAttribute("app") == null) {
                             style="margin: auto; text-align: center; height: 30%; width: 50%;"
                             class="wrapper">
                             <form action="${pageContext.request.contextPath}/currencySelection" method="post">
-	                            <label for="currency-select" style="color: white;"> Currency : </label>
+	                            <label for="currency-select" style="color: white;"> <strong> Currency : </strong></label>
 	                            <select name="currency" id="currency-select">
 	                            	<% 
 	                            		Service app = (Service)session.getAttribute("app"); 
-	                            		List<String> list = new ArrayList<String>(Arrays.asList(app.getActiveCurencies().split(";")));
+	                            		List<String> list = new ArrayList<String>(Arrays.asList(app.getActiveCurrencies().split(";")));
 	                      				for(int i = 0; i < list.size(); i++){
 	                      					if (list.get(i).equals((String)session.getAttribute("currency"))){
 	                      						out.println("<option selected=\"selected\" value=\""+ list.get(i) + "\">" + list.get(i) + "</option>");
@@ -94,10 +94,8 @@ if(session.getAttribute("app") == null) {
 					<div class="cards">
 					<%					
 					String json = app.getBuyableCarsJson((String)session.getAttribute("currency"));
-					System.out.println("json " + json);
 			        JSONParser parser = new JSONParser();
 			        JSONObject jsonObject = (JSONObject) parser.parse(json);
-			        if (jsonObject == null) System.out.println("tchoin");
 			        JSONArray cars = (JSONArray) jsonObject.get("cars");
 			        Iterator iterator = cars.iterator();
 			        while (iterator.hasNext()) {
@@ -109,7 +107,7 @@ if(session.getAttribute("app") == null) {
 			            	<img src="<%out.print(jo.get("imagePath"));%>"/>
 			            	<figcaption>
 								<div>
-									<strong> <% out.print(jo.get("model")); %> </strong><br><% out.print(jo.get("sellPrice")); out.print((String)session.getAttribute("currency"));%>
+									<strong> <% out.print(jo.get("model")); %> </strong><br><% out.print(jo.get("sellPrice") + " <strong>" + ((String)session.getAttribute("currency")) + "</strong>");%>
 								</div>
 								<div class="special-div">
 									<form action="${pageContext.request.contextPath}/addToCart"

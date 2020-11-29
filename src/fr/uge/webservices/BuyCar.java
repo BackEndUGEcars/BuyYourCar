@@ -20,10 +20,19 @@ public class BuyCar extends HttpServlet {
 		HttpSession session = request.getSession();
 		if (session == null || session.getAttribute("app") == null) request.getRequestDispatcher("/Home.jsp").forward(request, response);
 		Service app = (Service) session.getAttribute("app");
-		if (app.buyCar((Long)session.getAttribute("buyCar"), request.getParameter("username"), request.getParameter("password"))) {
+		int res = app.buyCar((Long)session.getAttribute("buyCar"), request.getParameter("username"), request.getParameter("password"));
+		switch (res) {
+		case 1: {
 			request.getRequestDispatcher("/Validation.jsp").forward(request, response);
-		} else {
+			break;
+		} case -1: {
 			request.getRequestDispatcher("/Invalidation.jsp").forward(request, response);
+		} case -2: {
+			request.getRequestDispatcher("/BadLogin.jsp").forward(request, response);
+		}
+		default:
+			request.getRequestDispatcher("/Invalidation.jsp").forward(request, response);
+			break;
 		}
 	}
 
